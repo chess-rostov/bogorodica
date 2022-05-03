@@ -7,6 +7,7 @@
 body {
     background: gray;
     text-align: center;
+    font-size: 200%;
     /*overflow-y: hidden;*/
 }
 
@@ -18,28 +19,16 @@ body {
     width: 100%;
 }
 
-#myDivAdd {
-    visibility: hidden;/*visible;*/
-    background: white;
-    /*width: 50%;*/
-    z-index: 10;
-    position: absolute;
-    width: 50%;
+
+#address_imgmyslider {
+    text-align: center;
+    
+    top: 1%;
+    height: 98%;
 }
 
-#div_loadmyslider/*, 
-#address_imgmyslider, 
-#img_loadmyslider*/ {
-    /*animation:fade 2s infinite;
-    -webkit-animation:fade 2s infinite;*/
-}
+#div_loadmyslider { 
 
-@keyframes fade
-{
-    0% {opacity:0}
-    33.333% { opacity: 0}
-    66.666% { opacity: 0}
-    100% { opacity: 1}
 }
 
 #mytable tr td.clicked {
@@ -78,7 +67,6 @@ body {
     overflow-x: auto;
 }
 
-
 div#div_carnav {
     margin: -10px 0;
     padding: 20px;
@@ -94,16 +82,17 @@ div#div_carnav {
     visibility: 'visible';
 }
 
+/*
 a.group1 img
 {
     padding-bottom: 20px;
-    /*margin-bottom: 20px;*/
 }
 
 img {
     max-width:auto; 
     height:100%;
 }
+*/
 
 #buttonSkrytb {
     /*z-index: 0;*/
@@ -128,10 +117,10 @@ var isRun = true;
 var iconurl = '';
 var address_site = '';
 var currentItem = 0;
-var timerValue = 2000;
+var timerValue = 5000;
 var flagSkrytb = false;
 var isClicked = false;
-var flagRandomPoryadok = false;
+var flagRandomPoryadok = true;
 var prevClickedItem = '';
 
 
@@ -502,34 +491,18 @@ async function myslider(){
 
 <div class="cont clearfix">
 
-    <div id="myDivAdd" >
-        <p>
-        <label>êàðòèíêà: </label>
-        <input id="addressForm" type="text" name="q" value="addressFormValue" />
-        </p>
-        <p><label>êóäà âåäåò: </label>
-        <input id="siteForm" type="text" name="q" value="siteFormValue"/>
-        </p>
-        <button id="btnFormAdd" onclick="buttonFormAdd();">äîáàâèòü</button>
-        <button id="btnFormCancel" onclick="buttonFormCancel();">îòìåíèòü</button>
-    </div>
-
-    <div id="div_carnav" class="car-nav">
+    <div id="div_carnav" class="car-nav" hidden="hidden">
         <button id="buttonSkrytb" onclick="skrytb();" value=">">></button>
         <button id="buttonOtkrytb" onclick="otkrytb();" value=""><</button>
-        <p><input id="checkboxAutolist" type="checkbox" checked="checked" onclick="autolist();">автопролистывание</input></p>
-        <p><INPUT id="checkboxRandomPoryadok" type="checkbox" onclick="checkboxRandomPoryadokClick();">в случайном порядке</input></p>
+        <p><input id="checkboxAutolist" type="checkbox" checked="checked" onclick="autolist();">авто</input></p>
+        <p><input id="checkboxRandomPoryadok" type="checkbox" checked="checked" onclick="checkboxRandomPoryadokClick();">случайная</input></p>
         <button id="buttonPrev" onclick="funcPrev();" disabled>назад</button>
         <button id="buttonNext" onclick="funcNext();" disabled>вперед</button>
         <p>
             <span>Таймер</span>
-            <INPUT id="timer" TYPE="RANGE" MIN="1000" MAX="10000" STEP="500" onchange="timerChange();" VALUE="2000">
+            <input id="timer" TYPE="RANGE" MIN="1000" MAX="10000" STEP="500" onchange="timerChange();" VALUE="5000">
         </p>
-            
-        <!-- <p>Ýôôåêò: ïðîñòàÿ ñìåíà</p> -->
-        <!--<button id="clearAllButton" onclick="clearAll();">î÷èñòèòü</button>
-        <button id="addButton" onclick="funcButtonAdd();" value="+">+</button>
-        <button id="removeButton" onclick="funcButtonRemove();" value="-">-</button>-->
+
         <div class="scroll-table-body">
 
             <table id="mytable">
@@ -559,7 +532,7 @@ async function myslider(){
 <script>
 
 window.onload = function() {
-    // Âàø ñêðèïò
+    // 
     addToTable();
     currentItem = 0;
     myslider();
