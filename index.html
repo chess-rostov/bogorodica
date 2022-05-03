@@ -19,16 +19,28 @@ body {
     width: 100%;
 }
 
-
-#address_imgmyslider {
-    text-align: center;
-    
-    top: 1%;
-    height: 98%;
+#myDivAdd {
+    visibility: hidden;/*visible;*/
+    background: white;
+    /*width: 50%;*/
+    z-index: 10;
+    position: absolute;
+    width: 50%;
 }
 
-#div_loadmyslider { 
+#div_loadmyslider/*, 
+#address_imgmyslider, 
+#img_loadmyslider*/ {
+    /*animation:fade 2s infinite;
+    -webkit-animation:fade 2s infinite;*/
+}
 
+@keyframes fade
+{
+    0% {opacity:0}
+    33.333% { opacity: 0}
+    66.666% { opacity: 0}
+    100% { opacity: 1}
 }
 
 #mytable tr td.clicked {
@@ -67,6 +79,7 @@ body {
     overflow-x: auto;
 }
 
+
 div#div_carnav {
     margin: -10px 0;
     padding: 20px;
@@ -82,17 +95,16 @@ div#div_carnav {
     visibility: 'visible';
 }
 
-/*
 a.group1 img
 {
     padding-bottom: 20px;
+    /*margin-bottom: 20px;*/
 }
 
 img {
     max-width:auto; 
     height:100%;
 }
-*/
 
 #buttonSkrytb {
     /*z-index: 0;*/
@@ -120,7 +132,7 @@ var currentItem = 0;
 var timerValue = 5000;
 var flagSkrytb = false;
 var isClicked = false;
-var flagRandomPoryadok = true;
+var flagRandomPoryadok = false;
 var prevClickedItem = '';
 
 
@@ -213,10 +225,10 @@ function funcButtonRemove(){
 
     
     //let el = document.getElementById('td-' + urls.length - 1);
-    //el.remove(); // Óäàëèò ýëåìåíò div ñ èäåíòèôèêàòîðîì 'div-02'
+    //el.remove(); // ?????? ??????? div ? ??????????????? 'div-02'
     /*for(let i = 0; i < urls.length; i ++){
         let el = document.getElementById('td-' + urls.length - 1);
-        el.remove(); // Óäàëèò ýëåìåíò div ñ èäåíòèôèêàòîðîì 'div-02'
+        el.remove(); // ?????? ??????? div ? ??????????????? 'div-02'
     }*/
     //urls[currentItem].splice(currentItem, 1);
     //sites[currentItem].splice(currentItem, 1);
@@ -413,7 +425,7 @@ function autolist() {
 
 
 async function myslider(){
-    console.log('öåëèòåëüíèöà, áëàæåííîå ÷ðåâî, íåóïèâàåìàÿ ÷àøà, æèðîâèöêàÿ');
+    console.log('????????????, ????????? ?????, ??????????? ????, ??????????');
 
     //let i = 0;
     //currentItem = 0;
@@ -422,18 +434,18 @@ async function myslider(){
     if(isRun){
         while (currentItem <= urls.length - 1){
             if(isRun){
-            //öåëèòåëüíèöà
+            //????????????
             /*if(currentItem==0){iconurl=urls[0]};
             if(currentItem==1){iconurl=urls[1]};
             if(currentItem==2){iconurl=urls[2]};
             if(currentItem==3){iconurl=urls[3]};
             if(currentItem==4){iconurl=urls[4]};
             if(currentItem==5){iconurl=urls[5]};
-            //áëàæåííîå ÷ðåâî
+            //????????? ?????
             if (currentItem==6){iconurl=urls[6]}
             if (currentItem==7){iconurl=urls[7]}
             if (currentItem==8){iconurl=urls[8]}
-            //íåóïèâàåìàÿ ÷àøà
+            //??????????? ????
             if (currentItem==9){iconurl=urls[9]}
             if (currentItem==10){iconurl=urls[10]}
             if (currentItem==11){iconurl=urls[11]}
@@ -445,7 +457,7 @@ async function myslider(){
             if (currentItem==17){iconurl=urls[17]}
             if (currentItem==18){iconurl=urls[18]}
             if (currentItem==19){iconurl=urls[19]}
-            //æèðîâèöêàÿ
+            //??????????
             if (currentItem==20){iconurl=urls[20]}
             if (currentItem==21){iconurl=urls[21]}
             if (currentItem==22){iconurl=urls[22]}
@@ -491,18 +503,34 @@ async function myslider(){
 
 <div class="cont clearfix">
 
+    <div id="myDivAdd" >
+        <p>
+        <label>????????: </label>
+        <input id="addressForm" type="text" name="q" value="addressFormValue" />
+        </p>
+        <p><label>???? ?????: </label>
+        <input id="siteForm" type="text" name="q" value="siteFormValue"/>
+        </p>
+        <button id="btnFormAdd" onclick="buttonFormAdd();">????????</button>
+        <button id="btnFormCancel" onclick="buttonFormCancel();">????????</button>
+    </div>
+
     <div id="div_carnav" class="car-nav" hidden="hidden">
         <button id="buttonSkrytb" onclick="skrytb();" value=">">></button>
         <button id="buttonOtkrytb" onclick="otkrytb();" value=""><</button>
         <p><input id="checkboxAutolist" type="checkbox" checked="checked" onclick="autolist();">авто</input></p>
-        <p><input id="checkboxRandomPoryadok" type="checkbox" checked="checked" onclick="checkboxRandomPoryadokClick();">случайная</input></p>
+        <p><INPUT id="checkboxRandomPoryadok" type="checkbox" onclick="checkboxRandomPoryadokClick();">случайная</input></p>
         <button id="buttonPrev" onclick="funcPrev();" disabled>назад</button>
         <button id="buttonNext" onclick="funcNext();" disabled>вперед</button>
         <p>
             <span>Таймер</span>
-            <input id="timer" TYPE="RANGE" MIN="1000" MAX="10000" STEP="500" onchange="timerChange();" VALUE="5000">
+            <INPUT id="timer" TYPE="RANGE" MIN="1000" MAX="10000" STEP="500" onchange="timerChange();" VALUE="5000">
         </p>
-
+            
+        <!-- <p>??????: ??????? ?????</p> -->
+        <!--<button id="clearAllButton" onclick="clearAll();">????????</button>
+        <button id="addButton" onclick="funcButtonAdd();" value="+">+</button>
+        <button id="removeButton" onclick="funcButtonRemove();" value="-">-</button>-->
         <div class="scroll-table-body">
 
             <table id="mytable">
@@ -532,7 +560,7 @@ async function myslider(){
 <script>
 
 window.onload = function() {
-    // 
+    // ??? ??????
     addToTable();
     currentItem = 0;
     myslider();
