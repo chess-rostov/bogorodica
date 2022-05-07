@@ -220,10 +220,23 @@ document.addEventListener('keyup', function(event){
         funcNext();
     }
     if(event.key == 'ArrowDown'){
-        funcNext();
+        funcPrev();
     }
     if(event.key == 'ArrowUp'){
-        funcPrev();
+        funcNext();
+    }
+  
+    if(event.key == '4'){
+      funcPrev();
+    }
+    if(event.key == '6'){
+      funcNext();
+    }
+    if(event.key == '2'){
+      funcPrev();
+    }
+    if(event.key == '8'){
+      funcNext();
     }
 });
 
@@ -999,7 +1012,7 @@ function autolist() {
 
 
 async function myslider(){
-    console.log('????????????, ????????? ?????, ??????????? ????, ??????????');
+    console.log('myslider');
 
     //let i = 0;
     //currentItem = 0;
@@ -1079,10 +1092,10 @@ async function myslider(){
 
     <div id="myDivAdd" >
         <p>
-        <label>????????: </label>
+        <label>картинка: </label>
         <input id="addressForm" type="text" name="q" value="addressFormValue" />
         </p>
-        <p><label>???? ?????: </label>
+        <p><label>куда ведет: </label>
         <input id="siteForm" type="text" name="q" value="siteFormValue"/>
         </p>
         <button id="btnFormAdd" onclick="buttonFormAdd();">????????</button>
@@ -1105,7 +1118,7 @@ async function myslider(){
             <INPUT id="timer" TYPE="RANGE" MIN="1000" MAX="10000" STEP="500" onchange="timerChange();" VALUE="5000">
         </p>
             
-        <!-- <p>??????: ??????? ?????</p> -->
+        <!-- <p>что-то написано</p> -->
         <!--<button id="clearAllButton" onclick="clearAll();">????????</button>
         <button id="addButton" onclick="funcButtonAdd();" value="+">+</button>
         <button id="removeButton" onclick="funcButtonRemove();" value="-">-</button>-->
@@ -1138,7 +1151,7 @@ async function myslider(){
 <script>
 
 window.onload = function() {
-    // ??? ??????
+    // 
     addToTable();
     currentItem = 0;
     myslider();
