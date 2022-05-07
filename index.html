@@ -135,6 +135,7 @@ img {
 var isRun = true;
 var iconurl = '';
 var address_site = '';
+var img_title = '';
 var currentItem = 0;
 var timerValue = 5000;
 var flagSkrytb = false;
@@ -766,6 +767,8 @@ function change(in_currentItem){
     }
     iconurl=urls[currentItem];
     address_site = sites[currentItem];
+    img_title = stranicas[currentItem];
+    $("#img_loadmyslider").removeAttr("title").attr("title", img_title);
     $("#img_loadmyslider").removeAttr("src").attr("src", iconurl);
     $("#address_imgmyslider").removeAttr("href").attr("href", address_site);
 }
@@ -1062,7 +1065,7 @@ async function myslider(){
         <div class="slideshow"></div>
             <div id="div_loadmyslider">
                 <a id="address_imgmyslider" target="_blank" href="https://azbyka.ru/days/menology/ikons">
-                    <img id="img_loadmyslider" src="https://azbyka.ru/days/storage/images/icons-of-our-lady/345/p1bt6mtb9g17vg1j9m1bs5md6fs63.jpg"/>
+                    <img id="img_loadmyslider" title="" src="https://azbyka.ru/days/storage/images/icons-of-our-lady/345/p1bt6mtb9g17vg1j9m1bs5md6fs63.jpg"/>
                 </a>
             </div>
         </div>
